@@ -46,7 +46,6 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { InlineEditComponent } from './cocis/inline-edit/inline-edit.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -61,26 +60,26 @@ import { InlineEditComponent } from './cocis/inline-edit/inline-edit.component';
     NgxChartsModule,
     NgxEchartsModule,
     AgmCoreModule.forRoot({
-      apiKey: environment.googleMapApiKey
+      apiKey: environment.googleMapApiKey,
     }),
     LeafletModule,
     FullCalendarModule,
 
     UIModule,
-    LayoutModule
+    LayoutModule,
   ],
   declarations: [
     BasePageComponent,
     PageDashboardComponent,
-    
+
     PageContractorComponent,
-    
+
     PagePaymentsComponent,
     PageLiftingsOperationsComponent,
     PageDepartmentsComponent,
     Page404Component,
     PageContractorProfileComponent,
-    
+
     PageUserProfileComponent,
     PageEditAccountComponent,
     PageSignInComponent,
@@ -98,7 +97,7 @@ import { InlineEditComponent } from './cocis/inline-edit/inline-edit.component';
     EditService,
     ToolbarService,
   ],
-  exports: [ ],
-  entryComponents: [ ]
+  exports: [],
+  entryComponents: [],
 })
 export class PagesModule {}

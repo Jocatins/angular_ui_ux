@@ -15,7 +15,7 @@ export class InlineEditComponent
   extends BasePageComponent
   implements OnInit, OnDestroy {
   public pageSettings: PageSettingsModel = { pageSize: 4 };
-  data: object[] = [
+  public data: object[] = [
     {
       OrderID: 10248,
       CustomerID: 'VINET',

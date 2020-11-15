@@ -15,13 +15,20 @@ import { pageDataReducer } from './store/reducers/page-data.reducer';
 import { appSettingsReducer } from './store/reducers/app-settings.reducer';
 import { patientsReducer } from './store/reducers/patients.reducer';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { GridModule } from '@syncfusion/ej2-angular-grids';
+import {
+  GridModule,
+  GroupService,
+  PagerModule,
+  PageService,
+  SortService,
+} from '@syncfusion/ej2-angular-grids';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     GridModule,
+    PagerModule,
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
@@ -36,7 +43,12 @@ import { GridModule } from '@syncfusion/ej2-angular-grids';
     UIModule,
     PagesModule,
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    PageService,
+    SortService,
+    GroupService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
