@@ -3,9 +3,12 @@
     <li
       class="menu-item"
       *ngFor="let item of menuItems"
-      [ngClass]="{ 'active': (item.active || isActive([orientation, item.routing])), 'has-sub': item.sub }"
+      [ngClass]="{
+        active: item.active || isActive([orientation, item.routing]),
+        'has-sub': item.sub
+      }"
     >
-      <div *ngIf="item.groupTitle; then group else default"></div>
+      <div *ngIf="item.groupTitle; then group; else default"></div>
 
       <!-- Group title -->
       <ng-template #group>
@@ -47,9 +50,6 @@
           </a>
         </ng-template>
         <!-- end Single item -->
-
-       
-       
       </ng-template>
       <!-- end Default item -->
     </li>

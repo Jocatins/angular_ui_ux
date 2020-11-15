@@ -44,6 +44,7 @@ import {
 // import { ProductDataService } from './tester/product-data.service';
 // import {DateRangePickerModule} from '@syncfusion/ej2-angular-calendars'
 import { BrowserModule } from '@angular/platform-browser';
+import { InlineEditComponent } from './cocis/inline-edit/inline-edit.component';
 
 
 @NgModule({
@@ -86,6 +87,7 @@ import { BrowserModule } from '@angular/platform-browser';
     PageSignUpComponent,
     FileuploadsComponent,
     PageSearchTableComponent,
+    InlineEditComponent,
     // TesterComponent,
   ],
   providers: [

@@ -17,7 +17,7 @@
     },
     "routing": "lifting-operations"
   },
-  
+
   {
     "title": "Contractors",
     "icon": {
@@ -32,14 +32,19 @@
     },
     "routing": "payments"
   },
-  
+
   {
     "title": "Search Tables",
     "icon": {
       "class": "icofont-pay"
     },
     "routing": "search-table"
+  },
+  {
+    "title": "Inline Edit",
+    "icon": {
+      "class": "icofont-edit"
+    },
+    "routing": "inline-edit"
   }
- 
-
 ]

@@ -9,9 +9,11 @@ import { FormBuilder } from '@angular/forms';
 @Component({
   selector: 'page-departments',
   templateUrl: './departments.component.html',
-  styleUrls: ['./departments.component.scss']
+  styleUrls: ['./departments.component.scss'],
 })
-export class PageDepartmentsComponent extends BasePageComponent implements OnInit, OnDestroy {
+export class PageDepartmentsComponent
+  extends BasePageComponent
+  implements OnInit, OnDestroy {
   departments: any[];
 
   constructor(
@@ -27,12 +29,12 @@ export class PageDepartmentsComponent extends BasePageComponent implements OnIni
       breadcrumbs: [
         {
           title: 'Medicine',
-          route: 'default-dashboard'
+          route: 'default-dashboard',
         },
         {
-          title: 'Departments'
-        }
-      ]
+          title: 'Departments',
+        },
+      ],
     };
     this.departments = [];
   }

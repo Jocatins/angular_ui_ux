@@ -7,7 +7,7 @@ import { TCModalService } from '../../../ui/services/modal/modal.service';
 @Component({
   selector: 'footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
   @HostBinding('class.footer') true;
@@ -16,11 +16,7 @@ export class FooterComponent implements OnInit {
 
   @Input() pageData: IPageData;
 
-  constructor(
-   
-  ) { }
+  constructor() {}
 
-  ngOnInit() { }
-
-  
+  ngOnInit() {}
 }

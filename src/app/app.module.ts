@@ -15,28 +15,28 @@ import { pageDataReducer } from './store/reducers/page-data.reducer';
 import { appSettingsReducer } from './store/reducers/app-settings.reducer';
 import { patientsReducer } from './store/reducers/patients.reducer';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { GridModule } from '@syncfusion/ej2-angular-grids';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
+    GridModule,
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
     StoreModule.forRoot({
       pageData: pageDataReducer,
       appSettings: appSettingsReducer,
-      patients: patientsReducer
+      patients: patientsReducer,
     }),
 
     RoutingModule,
     LayoutModule,
     UIModule,
-    PagesModule
+    PagesModule,
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

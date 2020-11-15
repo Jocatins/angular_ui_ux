@@ -8,15 +8,14 @@ import { HttpService } from '../../../services/http/http.service';
 @Component({
   selector: 'page-search-table',
   templateUrl: './search-table.component.html',
-  styleUrls: ['./search-table.component.scss']
+  styleUrls: ['./search-table.component.scss'],
 })
-export class PageSearchTableComponent extends BasePageComponent implements OnInit, OnDestroy {
+export class PageSearchTableComponent
+  extends BasePageComponent
+  implements OnInit, OnDestroy {
   tableData: any[];
 
-  constructor(
-    store: Store<IAppState>,
-    httpSv: HttpService
-  ) {
+  constructor(store: Store<IAppState>, httpSv: HttpService) {
     super(store, httpSv);
 
     this.pageData = {
@@ -25,13 +24,13 @@ export class PageSearchTableComponent extends BasePageComponent implements OnIni
       breadcrumbs: [
         {
           title: 'COCIS',
-          route: 'default-dashboard'
+          route: 'default-dashboard',
         },
-        
+
         {
-          title: 'Search-table'
-        }
-      ]
+          title: 'Search-table',
+        },
+      ],
     };
     this.tableData = [];
   }

@@ -18,8 +18,7 @@ import { PageSignInComponent } from '../pages/apps/sessions/sign-in';
 import { PageSignUpComponent } from '../pages/apps/sessions/sign-up';
 import { FileuploadsComponent } from '../pages/fileuploads';
 import { PageSearchTableComponent } from '../pages/cocis/search-table';
-
-
+import { InlineEditComponent } from '../pages/cocis/inline-edit/inline-edit.component';
 
 const VERTICAL_ROUTES: Routes = [
   { path: 'default-dashboard', component: PageDashboardComponent },
@@ -28,17 +27,14 @@ const VERTICAL_ROUTES: Routes = [
   { path: 'payments', component: PagePaymentsComponent },
   { path: 'lifting-operations', component: PageLiftingsOperationsComponent },
   { path: 'departments', component: PageDepartmentsComponent },
-  { path: 'fileuploads', component: FileuploadsComponent},
+  { path: 'fileuploads', component: FileuploadsComponent },
   { path: 'search-table', component: PageSearchTableComponent },
-
-
-
-
+  { path: 'inline-edit', component: InlineEditComponent },
 
   { path: 'user-profile', component: PageUserProfileComponent },
   { path: 'edit-account', component: PageEditAccountComponent },
 
-  { path: '**', component: Page404Component }
+  { path: '**', component: Page404Component },
 ];
 
 const PUBLIC_ROUTES: Routes = [
@@ -50,37 +46,33 @@ export const ROUTES: Routes = [
   {
     path: '',
     redirectTo: '/vertical/default-dashboard',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'vertical',
     component: VerticalLayoutComponent,
-    children: VERTICAL_ROUTES
+    children: VERTICAL_ROUTES,
   },
   {
     path: 'horizontal',
     component: HorizontalLayoutComponent,
-    children: VERTICAL_ROUTES
+    children: VERTICAL_ROUTES,
   },
   {
     path: 'public',
     component: PublicLayoutComponent,
-    children: PUBLIC_ROUTES
+    children: PUBLIC_ROUTES,
   },
   {
     path: '**',
     component: VerticalLayoutComponent,
-    children: VERTICAL_ROUTES
-  }
+    children: VERTICAL_ROUTES,
+  },
 ];
 
 @NgModule({
-  imports: [
-
-  ],
-  exports: [
-    RouterModule
-  ],
-  declarations: []
+  imports: [],
+  exports: [RouterModule],
+  declarations: [],
 })
-export class RoutingModule { }
+export class RoutingModule {}

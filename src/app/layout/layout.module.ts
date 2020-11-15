@@ -28,7 +28,7 @@ import { NavbarSkeletonComponent } from './components/navbar-skeleton';
     FormsModule,
     ReactiveFormsModule,
     MalihuScrollbarModule.forRoot(),
-    UIModule
+    UIModule,
   ],
   declarations: [
     BaseLayoutComponent,
@@ -45,12 +45,7 @@ import { NavbarSkeletonComponent } from './components/navbar-skeleton';
     LoginFormComponent,
     RegisterFormComponent,
     NavbarSkeletonComponent,
-    
   ],
-  exports: [
-    LoginFormComponent,
-    RegisterFormComponent,
-    
-  ]
+  exports: [LoginFormComponent, RegisterFormComponent],
 })
-export class LayoutModule { }
+export class LayoutModule {}
