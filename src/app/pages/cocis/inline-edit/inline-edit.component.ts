@@ -1,23 +1,26 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
 import {
   DataSourceChangedEventArgs,
   DataStateChangeEventArgs,
   EditSettingsModel,
+  IEditCell,
   PageSettingsModel,
+  SaveEventArgs,
   ToolbarItems,
-} from '@syncfusion/ej2-angular-grids';
-import { BasePageComponent } from '../../base-page';
-import { Store } from '@ngrx/store';
-import { IAppState } from '../../../interfaces/app-state';
-import { HttpService } from '../../../services/http/http.service';
-import { Observable } from 'rxjs';
-import { ProductStoreService } from './product-store.service';
+} from "@syncfusion/ej2-angular-grids";
+import { BasePageComponent } from "../../base-page";
+import { Store } from "@ngrx/store";
+import { IAppState } from "../../../interfaces/app-state";
+import { HttpService } from "../../../services/http/http.service";
+import { Observable } from "rxjs";
+import { ProductStoreService } from "./product-store.service";
+import { Internationalization } from "@syncfusion/ej2-base";
 
 @Component({
-  selector: 'app-inline-edit',
+  selector: "app-inline-edit",
 
-  templateUrl: './inline-edit.component.html',
-  styleUrls: ['./inline-edit.component.scss'],
+  templateUrl: "./inline-edit.component.html",
+  styleUrls: ["./inline-edit.component.scss"],
 })
 export class InlineEditComponent
   extends BasePageComponent
@@ -25,8 +28,39 @@ export class InlineEditComponent
   public pageSettings: PageSettingsModel = { pageSize: 4 };
   public products: Observable<DataStateChangeEventArgs>;
   public editSettings: EditSettingsModel;
+  public numParams: IEditCell = { params: { format: "C" } };
   public toolbar: ToolbarItems[];
+  public orderData: object;
+  public val: any;
+  public Intl: Internationalization = new Internationalization();
 
+  // ------------------------------- SAVE EVENT ARGS--------------------------------------------------------------->
+  actionBegin(args: SaveEventArgs) {
+    if (args.requestType === "beginEdit" || args.requestType === "add") {
+      this.orderData = Object.assign({}, args.rowData);
+    }
+    if (args.requestType === "save") {
+      const Validity = "Validity";
+      args.data[Validity] = this.orderData[Validity];
+    }
+  }
+  // ------------------------------------------------------------------------------------------------->
+  // ---------------------------- DATE FORMATTER METHOD ------------------------------------------------------->
+  public dateformatter = (value: any) => {
+    let dFormatter: Function = this.Intl.getDateFormat({
+      skeleton: "y",
+      type: "date",
+    });
+    return dFormatter(new Date(value));
+  };
+  // ---------------------------------------------------------------------------------------------------------->
+  public valueAccess = (field: string, value: object, column: object) => {
+    this.val =
+      this.dateformatter(new Date(value[field][0])) +
+      " - " +
+      this.dateformatter(new Date(value[field][1]));
+    return this.val;
+  };
   // ---------------------------- PAGE ROUTING SERVICES ------------------------------------------------
   constructor(
     store: Store<IAppState>,
@@ -36,16 +70,16 @@ export class InlineEditComponent
     super(store, httpSv);
     this.products = productservice;
     this.pageData = {
-      title: 'Inline Edit',
+      title: "Inline Edit",
       loaded: true,
       breadcrumbs: [
         {
-          title: 'COCIS',
-          route: 'default-dashboard',
+          title: "COCIS",
+          route: "default-dashboard",
         },
 
         {
-          title: 'Inline-Edit',
+          title: "Inline-Edit",
         },
       ],
     };
@@ -57,10 +91,10 @@ export class InlineEditComponent
       allowAdding: true,
       allowDeleting: true,
       allowEditing: true,
-      mode: 'Normal',
-      newRowPosition: 'Bottom',
+      mode: "Normal",
+      newRowPosition: "Bottom",
     };
-    this.toolbar = ['Add', 'Delete', 'Edit', 'Update', 'Cancel'];
+    this.toolbar = ["Add", "Delete", "Edit", "Update", "Cancel"];
     this.productservice.execute(state);
     super.ngOnInit();
   }
@@ -71,15 +105,15 @@ export class InlineEditComponent
   // -------------------------------------------------------------------------------------------->
   // ------------------------- DATA SOURCE CHANGED EVENT ARGS WITH CRUD ---------------------------------------->
   public dataSourceChanged(state: DataSourceChangedEventArgs): void {
-    if (state.action === 'add') {
+    if (state.action === "add") {
       this.productservice.addRecord(state).subscribe(() => {
         state.endEdit();
       });
-    } else if (state.action === 'edit') {
+    } else if (state.action === "edit") {
       this.productservice.updateRecord(state).subscribe(() => {
         state.endEdit();
       });
-    } else if (state.requestType === 'delete') {
+    } else if (state.requestType === "delete") {
       this.productservice.deleteRecord(state).subscribe(() => {
         state.endEdit();
       });

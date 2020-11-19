@@ -26,7 +26,7 @@
     "@asymmetrik/ngx-leaflet": "5.0.1",
     "@ngrx/store": "7.2.0",
     "@swimlane/ngx-charts": "10.0.0",
-    "@syncfusion/ej2-angular-calendars": "^18.3.42",
+    "@syncfusion/ej2-angular-calendars": "^18.3.48",
     "@syncfusion/ej2-angular-grids": "^18.3.48",
     "@syncfusion/ej2-material-theme": "^18.3.48",
     "@types/jquery": "3.3.29",

@@ -42,9 +42,10 @@ import {
   ToolbarService,
 } from '@syncfusion/ej2-angular-grids';
 // import { ProductDataService } from './tester/product-data.service';
-// import {DateRangePickerModule} from '@syncfusion/ej2-angular-calendars'
+
 import { BrowserModule } from '@angular/platform-browser';
 import { InlineEditComponent } from './cocis/inline-edit/inline-edit.component';
+import { DateRangePickerModule } from '@syncfusion/ej2-angular-calendars';
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import { InlineEditComponent } from './cocis/inline-edit/inline-edit.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    DateRangePickerModule,
     GridModule,
     PagerModule,
     // InMemoryWebApiModule.forRoot(ProductDataService),
