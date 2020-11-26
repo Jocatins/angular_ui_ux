@@ -1,43 +1,97 @@
-<ejs-grid
-  [dataSource]="products | async"
-  [editSettings]="editSettings"
-  [toolbar]="toolbar"
-  (dataSourceChanged)="dataSourceChanged($event)"
-  (dataStateChange)="dataStateChange($event)"
-  (actionBegin)="actionBegin($event)"
->
-  <e-columns>
-    <e-column
-      field="id"
-      headerText="Order ID"
-      isPrimaryKey="true"
-      textAlign="Left"
-    >
-    </e-column>
-    <e-column field="CustomerID" headerText="Customer ID"> </e-column>
-    <e-column field="ShipCity" headerText="Ship City"> </e-column>
-    <e-column
-      field="Freight"
-      headerText="Price ($)"
-      editType="numericedit"
-      [edit]="numParams"
-      format="C"
-    >
-    </e-column>
+<!-- <mat-card>Simple card</mat-card> -->
 
-    <e-column field="ShipName" headerText="Ship Name"> </e-column>
-    <e-column field="ShipCountry" headerText="Ship Country"> </e-column>
-    <e-column
-      field="Validity"
-      headerText="Validity Period"
-      [valueAccessor]="valueAccess"
-    >
-      <ng-template #editTemplate>
-        <ejs-daterangepicker
-          [(value)]="orderData.Validity"
-          [format]="dd / MM / yyyy"
-        ></ejs-daterangepicker>
-      </ng-template>
-    </e-column>
-  </e-columns>
-</ejs-grid>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <div class="row">
+          <div class="col s12">
+            <form class="inline-form" #inlineForm="ngForm">
+              <mat-form-field class="inline-full"
+                ><mat-label>Inspector Name</mat-label>
+                <input
+                  matInput="hidden"
+                  name="inspectorName"
+                  #id="ngModel"
+                  [(ngModel)]="inspectorName"
+                  required
+                  (ngSubmit)="submitProduct()"
+                />
+              </mat-form-field>
+              <br />
+              <mat-form-field class="inline-full"
+                ><mat-label>Terminal Location</mat-label>
+                <input
+                  matInput="hidden"
+                  name="terminalLocation"
+                  #id="ngModel"
+                  [(ngModel)]="terminalLocation"
+                />
+              </mat-form-field>
+              <br />
+              <mat-form-field class="inline-full"
+                ><mat-label>Contract Type</mat-label>
+                <input
+                  matInput="hidden"
+                  name="contractType"
+                  #id="ngModel"
+                  [(ngModel)]="contractType"
+                />
+              </mat-form-field>
+              <br />
+              <mat-form-field class="inline-full"
+                ><mat-label>Vessel Number</mat-label>
+                <input
+                  matInput="hidden"
+                  name="vessel"
+                  #id="ngModel"
+                  [(ngModel)]="vessel"
+                  type="number"
+                />
+              </mat-form-field>
+              <div class="row">
+                <div class="input-field col s12">
+                  <button
+                    mat-raised-button
+                    type="button"
+                    (click)="resetForm(inlineForm)"
+                  >
+                    Reset
+                  </button>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    type="submit"
+                    (click)="submitProduct()"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col s6">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Inspector Name</th>
+                  <th scope="col">Terminal Location</th>
+                  <th scope="col">Contract Type</th>
+                  <th scope="col">Vessel Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let service of editService.products">
+                  <th scope="row">{{ service.inspectorName }}</th>
+                  <td>{{ service.terminalLocation }}</td>
+                  <td>{{ service.contractType }}</td>
+                  <td>{{ service.vessel }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

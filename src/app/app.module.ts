@@ -22,9 +22,7 @@ import {
   PageService,
   SortService,
 } from '@syncfusion/ej2-angular-grids';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { ProductDataService } from './pages/cocis/inline-edit/product-data.service';
-import { ProductStoreService } from './pages/cocis/inline-edit/product-store.service';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +30,7 @@ import { ProductStoreService } from './pages/cocis/inline-edit/product-store.ser
     BrowserModule,
     GridModule,
     PagerModule,
-    InMemoryWebApiModule.forRoot(ProductDataService),
+    MatCardModule,
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
@@ -52,7 +50,7 @@ import { ProductStoreService } from './pages/cocis/inline-edit/product-store.ser
     PageService,
     SortService,
     GroupService,
-    ProductStoreService,
+    // ProductStoreService,
   ],
   bootstrap: [AppComponent],
 })

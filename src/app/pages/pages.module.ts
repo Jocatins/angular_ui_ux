@@ -46,6 +46,12 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { InlineEditComponent } from './cocis/inline-edit/inline-edit.component';
 import { DateRangePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { MatCardModule } from '@angular/material/card';
+import {
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -56,6 +62,10 @@ import { DateRangePickerModule } from '@syncfusion/ej2-angular-calendars';
     DateRangePickerModule,
     GridModule,
     PagerModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     // InMemoryWebApiModule.forRoot(ProductDataService),
 
     ChartsModule,
