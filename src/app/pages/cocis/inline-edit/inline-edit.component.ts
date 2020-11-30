@@ -55,8 +55,9 @@ export class InlineEditComponent
       contractType: this.contractType,
       vessel: this.vessel,
     };
-    this.resetForm();
+
     this.editService.submitProduct(newProduct);
+    this.resetForm();
     console.log("data");
 
     alert("Data Saved Successfully");
